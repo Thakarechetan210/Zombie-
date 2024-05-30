@@ -1,0 +1,69 @@
+import random
+import time
+
+# Function to print a message with a slight delay for dramatic effect
+def print_pause(message):
+    print(message)
+    time.sleep(2)
+
+# Function to introduce the game
+def intro():
+    print_pause("You wake up in a deserted town.")
+    print_pause("Zombies are roaming the streets, and you must find a way to survive.")
+
+# Function to ask the player to choose a path
+def choose_path():
+    print_pause("You have two options:")
+    print_pause("1. Go to the abandoned house.")
+    print_pause("2. Sneak through the alleyway.")
+
+    choice = input("Enter 1 or 2: ")
+    if choice == '1':
+        abandoned_house()
+    elif choice == '2':
+        alleyway()
+    else:
+        print_pause("Invalid input. Please enter 1 or 2.")
+        choose_path()
+
+# Function to handle the abandoned house scenario
+def abandoned_house():
+    print_pause("You enter the abandoned house.")
+    print_pause("You find some supplies and a weapon.")
+    print_pause("Suddenly, a zombie bursts through the door!")
+    fight_or_flight()
+
+# Function to handle the alleyway scenario
+def alleyway():
+    print_pause("You decide to sneak through the alleyway.")
+    print_pause("You hear growling sounds nearby.")
+    print_pause("A zombie appears in front of you!")
+    fight_or_flight()
+
+# Function to handle the choice to fight or flee
+def fight_or_flight():
+    print_pause("What will you do?")
+    print_pause("1. Fight")
+    print_pause("2. Flee")
+
+    choice = input("Enter 1 or 2: ")
+    if choice == '1':
+        if random.randint(0, 1) == 0:
+            print_pause("You defeated the zombie!")
+            print_pause("You survived!")
+        else:
+            print_pause("You were bitten by the zombie!")
+            print_pause("Game over.")
+    elif choice == '2':
+        print_pause("You run away.")
+        choose_path()
+    else:
+        print_pause("Invalid input. Please enter 1 or 2.")
+        fight_or_flight()
+
+# Main function to run the game
+def play_game():
+    intro()
+    choose_path()
+
+play_game()
